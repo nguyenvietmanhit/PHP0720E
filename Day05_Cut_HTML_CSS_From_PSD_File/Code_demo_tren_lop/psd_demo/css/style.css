@@ -1,0 +1,33 @@
+body {
+	/* đè lại css của trình duyệt */
+	margin: 0;
+}
+
+.header {
+    background: #2F2F2F;
+    color: #fff;
+}
+
+.header-content {
+    width: 80%;
+    margin: auto;
+}
+
+/* Nhúng font đã download đc vào hệ thống */
+/* Nhúng font Pacifico */
+@font-face {
+	/* đặt tên font */
+	font-family: 'Pacifico';
+	/* đường dẫn tới font đã download, nhúng theo
+	 quy tắc đường dẫn tương đối */
+	 /* do file Pacifico đang nằm trong thư mục fonts
+	 , tuy nhiên thư mục fonts này lại ko ngang hàng
+	 với file style.css hiện tại, nên từ file style.css
+	 cần phải lên 1 cấp , sử dụng ký tự ../ */
+	src: url('../fonts/Pacifico.ttf');
+}
+
+.logo {
+    font-size: 30px;
+    font-family: Pacifico;
+}

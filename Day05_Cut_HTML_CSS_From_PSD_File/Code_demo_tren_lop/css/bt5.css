@@ -1,0 +1,74 @@
+.container {
+    width: 60%;
+    margin: auto;
+}
+
+.logo {
+    background: #EFEFEF;
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 2px 0;
+}
+
+.menu {
+    background: #efefef;
+    text-align: center;
+    padding: 4px 0;
+    margin-top: 5px;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	/* nên sử dụng inline-block thay vì inline để có 
+	cả tính chất của inline: đứng chung hàng đc và 
+	tính chất của block:  margin trên dưới đc; */
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.feature {
+    background: #efefef;
+    margin-top: 15px;
+    text-align: center;
+    text-transform: capitalize;
+    height: 100px;
+    /* có thể dùng padding-bottom cũng xử lý đc */
+    /* padding-bottom: 100px; */
+}
+
+.main-content {
+    margin-top: 10px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* ngoài float, display: flex còn có 1 cách dàn trang
+/layout khác là display:grid; */
+.row {
+    display: flex;
+    /* giá trị margin có thể nhận giá trị âm, tuy nhiên
+    pading thì ko thể */
+    margin: 0 -10px;
+}
+
+.col {
+	/* độ rộng của cột khi có cấu trúc layout thường
+	sẽ dùng đơn vị %, để còn reponsive về sau */
+    width: 33.33%;
+    background: #efefef;
+    height: 90px;
+    padding-top: 5px;
+    margin: 0 10px;
+}
+
+.footer {
+    background: #efefef;
+    margin-top: 15px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
