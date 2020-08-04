@@ -1,0 +1,110 @@
+<!-- Code_demo_tren_lop/demo_responsive.html -->
+<!-- 
+1 - Khái niệm:
++ Web responsive là 1 website có thể hiển thị tương thích
+với nhiều thiết bị khác nhau: PC - Ipad/TAblet - Mobile
++ Để tạo ra đc 1 web responsive, dùng CSS là chủ yếu
++ Web responsive chuẩn sẽ ko xuất hiện thanh cuộn ngang
++ Về mặt code HTML, cần thêm 1 thẻ meta sau, để trình
+duyệt sẽ hiểu đc kích thước chuẩn của các thiết bị
++ Về mặt code CSS, sử dụng 1 thuộc tính CSS mới: @media
+2 - Demo responsive đơn giản
+ -->
+ <!-- <meta name="viewport" content="width=device-width,initial-scale=1" /> -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta charset="utf8" />
+ 	<title>Demo responsive</title>
+ 	<!-- khai báo 1 thẻ meta cho phép làm việc với responsive -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+ </head>
+ <body>
+ 	<style type="text/css">
+ 		/* Để responsive đc, sử dụng thuộc tính CSS sau:
+ 		@media(<kich-thước-thiết-bị-muốn-responsive>); */
+ 		/* Các kích thước chuẩn của các thiết bị:
+		+ Mobile: max-width: 767px;
+		+ Ipad/Tablet: min-width: 768px, max-width: 1023px;
+		+ PC: min-width: 1024px;
+		- Thực tế ko cần khai báo @media cho các thiết bị PC, vì mặc định khi code CSS là đang code cho PC, nếu muốn responsive về các thiết bị nhỏ hơn thì sẽ css đè lại các CSS trên PC
+ 		 */
+ 		 /* Mặc định là CSS cho PC */
+ 		 h1 {
+ 		 	color:  red;
+ 		 }
+ 		 /* Các code CSS responsive phải nằm phía sau các CSS cho PC */
+ 		 /* CSS cho Ipad/Table */
+ 		 @media(min-width: 768px) and (max-width: 1023px) {
+ 		 	/* Các code CSS trong vùng này sẽ ăn với các thiết bị Ipad/Tablet */
+ 		 	h1 {
+ 		 		color: yellow;
+ 		 	}
+ 		 }
+ 		 /* CSS cho Mobile */
+ 		 @media(max-width: 767px) {
+ 		 	h1 {
+ 		 		color:  green;
+ 		 	}
+ 		 }
+
+ 	</style>
+ 	<h1>Thay đổi kích thước trình duyệt để thấy màu thay đổi</h1>
+
+ 	<!--
+ 	Ví dụ 2: có 1 cấu trúc layout:
+ 	+ Trên PC: hiển thị 1 hàng 4 cột có width=nhau
+ 	+ Trên Ipad: hiển thị 2 hàng, mỗi hàng 2 cột, các cột
+ 	có width=nhau
+ 	+ Trên mobile: hiển thị 4 hàng, mỗi hàng 1 cột bằng nhau
+ 	 -->
+ 	 <style type="text/css">
+ 	 	.col1 {
+ 	 		background: red;
+ 	 	}
+ 	 	.col2 {
+ 	 		background: blue;
+ 	 	}
+ 	 	.col3 {
+ 	 		background: yellow;
+ 	 	}
+ 	 	.col4 {
+ 	 		background: pink;
+ 	 	}
+ 	 	.row {
+		    display: flex;
+		}
+		.col {
+			width: 25%;
+		}
+
+		/* CSS trên Ipad */
+		@media(min-width: 768px) and (max-width: 1023px) {
+			/* Sử dụng công cụ Inspect HTML, chọn chế độ hiển thị của Ipad */
+			.row {
+				/* để bỏ đi cơ chế luôn giữ các cột trên 1 hàng của flex, thì phải thêm css sau:  */
+				flex-wrap: wrap;
+			}
+			.col {
+				width: 50%;
+			}
+		}
+		/* CSS Mobile */
+		@media(max-width: 767px) {
+			.row {
+				flex-wrap: wrap;
+			}
+			.col {
+				width: 100%;
+			}
+		}
+ 	 </style>
+ 	 <div class="row">
+ 	 	<div class="col1 col">Cột 1</div>
+ 	 	<div class="col2 col">Cột 2</div>
+ 	 	<div class="col3 col">Cột 3</div>
+ 	 	<div class="col4 col">Cột 4</div>
+ 	 </div>
+
+ </body>
+ </html>

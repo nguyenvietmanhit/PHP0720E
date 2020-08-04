@@ -1,0 +1,145 @@
+<!--
+demo_bootstrap.html
+1 - Khái niệm về Bootrstrap
++ Là 1 thư viện của CSS,cung cấp các class có sẵn cùng rất nhiều các component tiện dụng
++ Thư viện này cũng cung câp cơ chế responsive
++ Được tích hợp vào hầu hết các framework của PHP như Laravel, Zend, Cake ....
+2 - Hướng dẫn cài đặt
+Lên trang chủ getbootstrap.com tải về, quan tâm đến 1 file duy nhất: bootstrap.min.css, ko chỉnh sửa file này
+3  -Tích hợp vào hệ thống: có 2 cách
+ - Tải về và nhúng file bootstrap.min.css
+ - Dùng các link CDN, link online
+ VD: https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ 4 - Thực hành layout trong bootstrap
+ + Bootstrap responsive theo kiểu Mobile first - Thiết kế web responsive từ mobile -> Ipad -> PC, tại thời điểm hiện tại thì chưa nên theo hướng này
+ + Bootstrap thường sử dụng các class prefix sau: col-, col-sm-, col-md-
+ + Bootstrap chia 1 hàng làm 12 cột bằng nhau
+ + Học Bootstrap học Layout và các Component có sẵn
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo Bootstrap</title>
+	<!-- Để trang responsive đc, luôn phải khai báo thẻ meta sau -->
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<!-- Tích hợp Boostrap vào hệ thống -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+	<h1>Thực hành 1</h1>
+	<div class="container">
+		<form action="" method="post">
+			<h3>Job Application</h3>
+			<h4>Contact Information</h4>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-6">
+					<!-- Thẻ Label chỉ dùng với các input form -->
+					<!-- INput phải khai id, và giá trị của id phải trùng với giá trị của for trong label để hiệu ứng click Label mới có tác dụng -->
+					<label for="first-name">First name</label>
+					<input type="text" id="first-name" class="form-control" />
+				</div>
+				<div class="col-md-6 col-sm-6 col-6">
+					<label for="last-name">Last name</label>
+					<input type="text" id="last-name" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" id="email" class="form-control" />
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Send" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+
+	<h1>Thẻ h1</h1>
+	<!-- Demo 1 cấu trúc layout mẫu của Bootstrap -->
+	<!-- Bootstrap 4 hiển thị Ipad giống với PC -->
+	<style type="text/css">
+		.col1 {
+			background: red;
+		}
+		.col2 {
+			background: yellow;
+		}
+		.col3 {
+			background: pink;
+		}
+		.col4 {
+			background: blue;
+		}
+	</style>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-12 col1">
+				Cột 1
+			</div>
+			<div class="col-md-3 col-sm-6 col-12 col2">
+				Cột 2
+			</div>
+			<div class="col-md-3 col-sm-6 col-12 col3">
+				Cột 3
+			</div>
+			<div class="col-md-3 col-sm-6 col-12 col4">
+				Cột 4
+			</div>
+		</div>
+	</div>
+
+	<!-- 2 - Demo các component của Boostrap -->
+	<h1>ALERT</h1>
+		<div class="alert alert-primary" role="alert">
+	  A simple primary alert—check it out!
+	</div>
+	<div class="alert alert-secondary" role="alert">
+	  A simple secondary alert—check it out!
+	</div>
+	<div class="alert alert-success" role="alert">
+	  A simple success alert—check it out!
+	</div>
+	<div class="alert alert-danger" role="alert">
+	  A simple danger alert—check it out!
+	</div>
+	<div class="alert alert-warning" role="alert">
+	  A simple warning alert—check it out!
+	</div>
+	<div class="alert alert-info" role="alert">
+	  A simple info alert—check it out!
+	</div>
+	<div class="alert alert-light" role="alert">
+	  A simple light alert—check it out!
+	</div>
+	<div class="alert alert-dark" role="alert">
+	  A simple dark alert—check it out!
+	</div>
+	<h1>Form</h1>
+	<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<h1>Buttons</h1>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+</body>
+</html>
