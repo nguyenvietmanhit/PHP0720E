@@ -158,6 +158,8 @@
 		.flex-item {
 			width: 25%;
 		}
+		/* Nên ưu tiên sử dùng cơ chế flex để dựng layout, vì tính linh hoạt của nó. Cơ chế mặc định của flex, luôn giữ các khối con bên trong nó trên cùng 1 hàng, cho dù có thay đổi kích thước của các khối con = bao nhiêu đi chăng nữa */
+		/* Để dựng layout với flex sẽ can thiệp css sau vào khối cha, display: flex; */
 	</style>
 	<div class="flex-container">
 		<div class="flex-1 flex-item">Cột 1</div>
