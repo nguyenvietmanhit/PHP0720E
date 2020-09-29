@@ -9,6 +9,33 @@ session_start();
  *           /home.php: hiển thị username vừa
  * đăng nhập và thời gian hiện tại + Link Logout
  */
+
+// + xử lý nếu đã tồn tại cookie username và password, tương
+//đương chức năng Ghi nhớ đăng nhập, cho phép user đăng nhập
+if (isset($_COOKIE['username'])
+    && isset($_COOKIE['password'])) {
+    //cần set session username nếu ko sẽ bị chuyển hướng
+  //vô hạn -> die trang
+    $_SESSION['username'] = $_COOKIE['username'];
+    $_SESSION['success'] = 'Tự động login thành công';
+    header('Location: home.php');
+    exit();
+}
+
+// + Xử lý hiển thị session success nếu có
+if (isset($_SESSION['success'])) {
+    echo $_SESSION['success'];
+    unset($_SESSION['success']);
+}
+
+// + Xử lý nếu user đăng nhập r thì ko cho truy cập lại form
+//login, dựa vào session username
+if (isset($_SESSION['username'])) {
+    $_SESSION['success'] = 'Bạn đã đăng nhập rồi';
+    header('Location: home.php');
+    exit();
+}
+
 // XỬ LÝ SUBMIT FORM
 // + Debug mảng $_POST
 echo "<pre>";
@@ -37,6 +64,17 @@ if (isset($_POST['login'])) {
   if (empty($error)) {
     //Giả sử login thành công khi password = 123
     if ($password == 123) {
+      //+ Xử lý checkbox ghi nhớ đăng nhập chỉ khi user đăng
+      //nhập thành công, dùng cookie để lưu lại 2 thông tin
+      //username và password chỉ khi checkbox đc tích
+      if (isset($_POST['remember_me'])) {
+          setcookie('username', $username, time() + 3600);
+          //demo dùng mã hóa md5 để mã hóa password trc khi lưu cookie
+          setcookie('password', md5($password),
+              time() + 3600);
+      }
+//      die;
+
       //Hiển thị username tại file home.php, sử
       //dụng session để lưu lại username sau đó
       // mới chuyển hướng sang file home.php

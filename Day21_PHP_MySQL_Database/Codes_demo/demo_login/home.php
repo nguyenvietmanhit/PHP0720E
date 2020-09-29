@@ -17,8 +17,14 @@ print_r($_SESSION);
 echo "</pre>";
 //sử dụng {} để hiển thị giá trị của mảng
 //ngay trong chuỗi mà ko cần nối chuỗi
-$success = $_SESSION['success'];
-echo "<h1>$success</h1>";
+//$success = $_SESSION['success'];
+// + Xử lý sau khi hiển thị sesion message cần xóa luôn
+//để lần sau refresh lại trang sẽ ko hiển thị lại nữa
+// -> session flash
+if (isset($_SESSION['success'])) {
+  echo $_SESSION['success'];
+  unset($_SESSION['success']);
+}
 
 $username = $_SESSION['username'];
 echo "Xin chào, <b>$username</b>";
