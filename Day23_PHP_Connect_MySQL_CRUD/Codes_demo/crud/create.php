@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
         var_dump($is_insert);
     }
 }
-    
+
 ?>
 <!--Do form có input upload file nên bắt buộc method=post và thêm enctype-->
 <form action="" method="post" enctype="multipart/form-data">
