@@ -22,10 +22,9 @@ $sql_select_all = "SELECT * FROM products ORDER BY created_at DESC";
 $obj_result_all = mysqli_query($connection, $sql_select_all);
 // + Lấy mảng các sản phẩm từ đối tượng trung gian
 $products = mysqli_fetch_all($obj_result_all, MYSQLI_ASSOC);
-echo "<pre>";
-print_r($products);
-echo "</pre>";
-
+//echo "<pre>";
+//print_r($products);
+//echo "</pre>";
 ?>
 <?php
 // Hiển thị các session thông báo
@@ -33,6 +32,10 @@ if (isset($_SESSION['success'])) {
     echo $_SESSION['success'];
     //Sau khi hiển thị cần xóa đi để ko hiển thị lại
     unset($_SESSION['success']);
+}
+if (isset($_SESSION['error'])) {
+    echo $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 ?>
 <a href="create.php">Thêm mới sản phẩm</a>
