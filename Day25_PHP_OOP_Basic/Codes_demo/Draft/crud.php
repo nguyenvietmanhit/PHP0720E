@@ -50,7 +50,6 @@ class Book {
     }
 
     public function disconnectDatabase($connection) {
-      explode
         mysqli_close($connection);
     }
 
