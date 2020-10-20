@@ -25,6 +25,8 @@
             // Tham số data chứa kết quả trả về
             success: function(data) {
                 console.log(data);
+                // Hiển thị kết quả trả về trên ra màn hình
+                $('#result-ajax').html(data);
             }
         };
         // Khi click thẻ a thì mới gọi ajax
@@ -40,3 +42,5 @@
 <a href="#" id="ajax-click">
     Click để lấy danh sách sản phẩm
 </a>
+<!--Khai báo 1 khối để chờ hiển thị nội dung trả về từ ajax-->
+<div id="result-ajax" style="color: green"></div>
