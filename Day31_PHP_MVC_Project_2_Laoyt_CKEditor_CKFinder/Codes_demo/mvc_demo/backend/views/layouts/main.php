@@ -1,9 +1,23 @@
+<!--views/layouts/main.php
+File layout chính của ứng dụng
+- Cách ghép layout từ template có sẵn:
++ Copy file .html chính của template -> file layout .php của bạn
++ Sửa lại các đường dẫn tới các file css, js, images, fonts ... theo
+đúng cấu trúc mô hình MVC của bạn
++ Hiển thị các thuộc tính động cho layout: tiêu đề trang, các thuộc
+tính seo, nội dung view động ...., lấy từ các thuộc tính của
+controller cha
++ Hiển thị tập trung tất các lỗi tại file layout: error, session error,
+session success ...
+-->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>
+        <?php echo $this->page_title; ?>
+    </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -128,8 +142,33 @@
     <div class="message-wrap content-wrap content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <div class="alert alert-danger">Lỗi validate</div>
-            <p class="alert alert-success">Thành công</p>
+<!--        Hiển thị lỗi validate nếu có dựa vào thuộc tính error-->
+            <?php if (!empty($this->error)): ?>
+                <div class="alert alert-danger">
+                    <?php echo $this->error; ?>
+                </div>
+            <?php endif; ?>
+
+<!--            Hiển thị lỗi liên quan đến session dạng flash-->
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger">
+                    <?php
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    ?>
+                </div>
+            <?php endif; ?>
+
+<!--            Hiển thị thành công liên quan đến session dạng flash-->
+            <?php if (isset($_SESSION['success'])): ?>
+                <div class="alert alert-success">
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </div>
+            <?php endif; ?>
+<!--            <p class="alert alert-success">Thành công</p>-->
         </section>
     </div>
 
@@ -137,8 +176,11 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
-            Nội dung hiển thị ở đây
-
+<!--            Nội dung hiển thị ở đây-->
+        <?php
+        // Hiển thị nội dung view động
+        echo $this->content;
+        ?>
         </section>
         <!-- /.content -->
     </div>
@@ -164,5 +206,10 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/js/adminlte.min.js"></script>
+<!--tích hợp CKEditor-->
+<script src="assets/ckeditor/ckeditor.js"></script>
+<!--Tích hợp js custom - file js của riêng bạn, đặt sau cùng các
+file js khác-->
+<script src="assets/js/script.js"></script>
 </body>
 </html>
