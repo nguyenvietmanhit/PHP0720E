@@ -26,8 +26,11 @@ require_once 'helpers/Helper.php';
                     <span class="shop-price">
                             <?php echo number_format($product['price']) ?>
                 </span>
-
-                    <span class="add-to-cart">
+<!--                    frontend/views/homes/index.php-->
+<!-- Khai báo thêm 1 thuộc tính do bạn tự định nghĩa ra
+, để khi click vào thì lấy đc id của sp vừa click-->
+                    <span data-id="<?php echo $product['id']?>"
+                          class="add-to-cart">
                         <a href="#" style="color: inherit">Thêm vào giỏ</a>
                     </span>
                 </div>

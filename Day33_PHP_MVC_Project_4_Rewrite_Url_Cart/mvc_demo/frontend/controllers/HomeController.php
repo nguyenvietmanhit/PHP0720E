@@ -7,7 +7,8 @@ class HomeController extends Controller {
     $product_model = new Product();
     $products = $product_model->getProductInHomePage();
 
-    $this->content = $this->render('views/homes/index.php', [
+    $this->content =
+        $this->render('views/homes/index.php', [
       'products' => $products
     ]);
     require_once 'views/layouts/main.php';

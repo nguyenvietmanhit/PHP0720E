@@ -40,5 +40,21 @@ class Product extends Model {
     $product =  $obj_select->fetch(PDO::FETCH_ASSOC);
     return $product;
   }
+
+
+  public function getProductById($product_id) {
+    // - Tạo câu truy vấn
+    $sql_select_one =
+        "SELECT * FROM products WHERE id=$product_id";
+    // - Tạo đối tượng truy vấn
+    $obj_select_one =
+        $this->connection->prepare($sql_select_one);
+    // - Thực thi đối tương truy vấn
+    $obj_select_one->execute();
+    // - Trả về mảng 1 phần tử duy nhất
+    $product = $obj_select_one
+        ->fetch(PDO::FETCH_ASSOC);
+    return $product;
+  }
 }
 

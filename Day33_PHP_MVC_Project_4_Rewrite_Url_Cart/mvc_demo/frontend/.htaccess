@@ -1,0 +1,17 @@
+#- .htaccess: file ngang hàng với file index gốc của
+#ứng dụng
+#- Dùng rewrite URL -> url thân thiện với người dùng
+#- File rất nhạy cảm, trang có thể die nếu chỉnh sửa
+#- File này ko đúng
+#- Các file mà ko có tên file, mặc định sẽ ẩn trên Window
+RewriteEngine On
+# - Khai báo các rule theo dạng sau:
+# RewriteRule <url-thân-thiện> <url-mvc>
+# - Rewrite URl cho trang Giỏ hàng của bạn
+RewriteRule gio-hang-cua-ban.html index.php?controller=cart&action=index
+#/index.php?controller=product&action=detail&id=7
+# - Rewrite cho trang chi tiết sản phẩm:
+# chi-tiet-san-pham/7
+# Với tham số động, bắt buộc phải dùng Biểu thức chính
+# quy - Regex
+RewriteRule chi-tiet-san-pham/([0-9]{1,}) index.php?controller=product&action=detail
