@@ -71,6 +71,27 @@ class CartController extends Controller
   // Giỏ hàng của bạn:
   //index.php?controller=cart&action=index
   public function index() {
+    // Debug session giỏ hàng:
+//    echo "<pre>";
+//    print_r($_SESSION['cart']);
+//    echo "</pre>";
+    //Xử lý submit form/ Cập nhật giỏ hàng
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    if (isset($_POST['submit'])) {
+      // Xử lý thêm trường hợp nếu số lượng âm thì
+      //ko cho update
+
+      // Update giỏ hàng là update lại số lượng từ form
+      //gửi lên
+      foreach ($_SESSION['cart'] AS $product_id => $cart) {
+        $_SESSION['cart'][$product_id]['quantity'] =
+            $_POST[$product_id];
+      }
+      $_SESSION['success'] = "Cập nhật giỏ thành công";
+    }
+
     // Lấy nội dung view
     $this->content
     = $this->render('views/carts/index.php');

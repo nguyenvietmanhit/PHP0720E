@@ -11,63 +11,59 @@
                 <th>Thành tiền</th>
                 <th></th>
             </tr>
-
+            <?php
+            // Tổng giá trị đơn hàng
+            $total_order = 0;
+            foreach($_SESSION['cart'] AS $product_id => $cart):
+            ?>
             <tr>
                 <td>
                     <img class="product-avatar img-responsive"
-                         src="../backend/assets/uploads/1596790118-product-logo3.png" width="80">
+                         src="../backend/assets/uploads/<?php echo $cart['avatar']?>"
+                         width="80">
                     <div class="content-product">
-                        <a href="chi-tiet-san-pham/samsung-s9/5" class="content-product-a">
-                            dsadsa </a>
+                        <a href="#" class="content-product-a">
+                            <?php echo $cart['name']; ?>
+                             </a>
                     </div>
                 </td>
                 <td>
-                    <!--                      cần khéo léo đặt name cho input số lượng, để khi xử lý submit form update lại giỏ hànTin nổi bậtg sẽ đơn giản hơn    -->
-                    <input type="number" min="0" name="3" class="product-amount form-control" value="4">
+                    <!--  cần khéo léo đặt name cho input số lượng, để khi xử lý submit form update lại giỏ hànTin nổi bậtg sẽ đơn giản hơn    -->
+<!--                    Với giỏ hàng hiện tại, đặt name = id của sản phẩm-->
+                    <input type="number" min="0"
+                           name="<?php echo $product_id;?>"
+                           class="product-amount form-control"
+                           value="<?php echo $cart['quantity']; ?>">
                 </td>
                 <td>
-                    11
+                    <?php
+                    // Format lại dạng tiền, ngăn cách hàng nghìn bằng ,
+                    $price_format = number_format($cart['price']);
+                    echo $price_format;
+                    ?>
                 </td>
                 <td>
-                    44
+                    <?php
+                    // Tổng tiền của từng sp
+                    $total_item = $cart['quantity'] * $cart['price'];
+                    echo number_format($total_item);
+                    // Cộng dồn cho biến tổng giá trị đơn hàng
+                    $total_order += $total_item;
+                    ?>
                 </td>
                 <td>
-                    <a class="content-product-a" href="xoa-san-pham/3.html">
+                    <a class="content-product-a"
+                       href="xoa-san-pham/<?php echo $product_id; ?>.html">
                         Xóa
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <img class="product-avatar img-responsive"
-                         src="../backend/assets/uploads/1596790088-product-img.jpg" width="80">
-                    <div class="content-product">
-                        <a href="chi-tiet-san-pham/samsung-s9/5" class="content-product-a">
-                            SP 2 </a>
-                    </div>
-                </td>
-                <td>
-                    <!--                      cần khéo léo đặt name cho input số lượng, để khi xử lý submit form update lại giỏ hànTin nổi bậtg sẽ đơn giản hơn    -->
-                    <input type="number" min="0" name="2" class="product-amount form-control" value="2">
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    2
-                </td>
-                <td>
-                    <a class="content-product-a" href="xoa-san-pham/2.html">
-                        Xóa
-                    </a>
-                </td>
-            </tr>
-
+            <?php endforeach; ?>
             <tr>
                 <td colspan="5" style="text-align: right">
                     Tổng giá trị đơn hàng:
                     <span class="product-price">
-                                            46 vnđ
+                       <?php echo number_format($total_order)?> vnđ
                                                 </span>
                 </td>
             </tr>
