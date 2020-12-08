@@ -5,6 +5,19 @@ require_once 'models/Product.php';
 
 class CartController extends Controller
 {
+  public function delete() {
+//    echo "<pre>";
+//    print_r($_GET);
+//    print_r($_SESSION['cart']);
+//    echo "</pre>";
+    $id = $_GET['id'];
+    unset($_SESSION['cart'][$id]);
+    $_SESSION['success'] =
+        "Xóa sản phẩm $id khỏi giỏ thành công";
+    header('Location: gio-hang-cua-ban.html');
+    exit();
+  }
+
   //Xử lý thêm sản phẩm vào giỏ
   public function add() {
 //    echo "abcdef";

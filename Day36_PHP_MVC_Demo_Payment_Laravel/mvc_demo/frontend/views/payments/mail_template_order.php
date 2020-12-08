@@ -71,7 +71,7 @@
         <tr>
             <td>
                 <a href="" class="content-product-a">
-                    <img class="product-avatar img-responsive" src="http://localhost/1596790088-product-img.jpg"
+                    <img class="product-avatar img-responsive" src="http://php0720e-nhom1.i/1596790088-product-img.jpg"
                          height="80">
                     <span class="content-product">
                                                                                             SP 2                                        </span>

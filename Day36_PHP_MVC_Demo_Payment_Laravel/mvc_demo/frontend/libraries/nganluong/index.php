@@ -174,24 +174,38 @@ if(@$_POST['nlpayment']) {
 			<tr><td colspan="2"><p><span style="color:#ff5a00;font-weight:bold;text-decoration:underline;">Lưu ý</span> Bạn nhập đầy đủ thông tin sau </td>
 				
 			</tr>
+            <?php
+            $payment_total = isset($_SESSION['payment']) ?
+                $_SESSION['payment']['price_total'] : '';
+            $fullname = isset($_SESSION['payment']) ?
+                $_SESSION['payment']['fullname'] : '';
+            $email = isset($_SESSION['payment']) ?
+                $_SESSION['payment']['email'] : '';
+            $mobile = isset($_SESSION['payment']) ?
+                $_SESSION['payment']['mobile'] : '';
+            ?>
 			<tr><td>Số tiền thanh toán: </td>
 				<td>
-					 <input type="text" style="width:270px" id="total_amount" name="total_amount" class="field-check " value="">
+					 <input type="text" style="width:270px" id="total_amount" name="total_amount" class="field-check "
+                            value="<?php echo $payment_total?>">
 				</td>
 			</tr>
 			<tr><td>Họ Tên: </td>
 				<td>
-					 <input type="text" style="width:270px" id="fullname" name="buyer_fullname" class="field-check " value="">
+					 <input type="text" style="width:270px" id="fullname" name="buyer_fullname" class="field-check "
+                            value="<?php echo $fullname?>">
 				</td>
 			</tr>
 			<tr><td>Email: </td>
 				<td>
-					 <input type="text" style="width:270px" id="fullname" name="buyer_email" class="field-check " value="">
+					 <input type="text" style="width:270px" id="fullname" name="buyer_email" class="field-check "
+                            value="<?php echo $email?>">
 				</td>
 			</tr>
 			<tr><td>Số Điện thoại: </td>
 				<td>
-					 <input type="text" style="width:270px" id="fullname" name="buyer_mobile" class="field-check " value="">
+					 <input type="text" style="width:270px" id="fullname" name="buyer_mobile" class="field-check "
+                            value="<?php echo $mobile?>">
 				</td>
 			</tr>				
 		</table>	
